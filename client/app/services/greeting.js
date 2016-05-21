@@ -1,11 +1,13 @@
 import axios from 'axios'
+import { AUTH_TOKEN_HEADER, API_URL } from '../constants/AppConfig'
+
 
 const greeting = {
 
   fetch () {
     const token = localStorage.getItem('token');
     if(token) {
-      return axios.get("http://localhost:3000/api/greeting", {headers: {"Authorization": token}});
+      return axios.get(API_URL + "greeting", {headers: {AUTH_TOKEN_HEADER: token}});
     } else {
       return new Promise(function(resolve, reject){ reject(); });
     }
