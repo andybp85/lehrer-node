@@ -1,12 +1,9 @@
 import axios from 'axios'
-<<<<<<< HEAD
 import { AUTH_TOKEN_HEADER,
          LOGIN_URL,
          REGISTER_URL,
          LOGOUT_URL } from '../constants/appConfig'
 
-=======
->>>>>>> parent of b2382fd... moving app conf into seperate module
 
 const authentication = {
 
