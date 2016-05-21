@@ -2,7 +2,7 @@ import axios from 'axios'
 import { AUTH_TOKEN_HEADER,
          LOGIN_URL,
          REGISTER_URL,
-         LOGOUT_URL } from '../constants/AppConfig'
+         LOGOUT_URL } from '../constants/appConfig'
 
 
 const authentication = {
