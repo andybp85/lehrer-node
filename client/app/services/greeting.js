@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { AUTH_TOKEN_HEADER, API_URL } from '../constants/appConfig'
+import { AUTH_TOKEN_HEADER, API_URL } from '../config/appConfig'
 
 
 const greeting = {
