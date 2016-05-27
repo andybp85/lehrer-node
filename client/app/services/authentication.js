@@ -1,8 +1,5 @@
 import axios from 'axios'
-import { AUTH_TOKEN_HEADER,
-         LOGIN_URL,
-         REGISTER_URL,
-         LOGOUT_URL } from '../config/appConfig'
+import { AUTH_TOKEN_HEADER, LOGIN_URL, REGISTER_URL, LOGOUT_URL } from '../config/appConfig'
 
 
 const authentication = {
@@ -10,7 +7,7 @@ const authentication = {
   isAuthenticated () {
     const token = localStorage.getItem('token');
     if(token) {
-      return axios.get("http://localhost:3000/api/session", {headers: {"Authorization": token}});
+      return axios.get(LOGIN_URL, {headers: {AUTH_TOKEN_HEADER: token}});
     } else {
       return new Promise(function(resolve, reject){ reject(); });
     }
@@ -18,21 +15,21 @@ const authentication = {
 
   login (email, password, cb) {
     const promise = axios.post("http://localhost:3000/api/session", {email: email,
-                                                                              password: password});
+                                                                     password: password});
     this.handleAuth(promise, cb);
   },
 
   register (email, password, passwordConfirmation, cb) {
-    const promise = axios.post("http://localhost:3000/api/users", {email: email,
-                                                                   password: password,
-                                                                   passwordConfirmation: passwordConfirmation});
+    const promise = axios.post(REGISTER_URL, {email: email,
+                                              password: password,
+                                              passwordConfirmation: passwordConfirmation});
     this.handleAuth(promise, cb);
   },
 
   logout () {
     const token = localStorage.getItem('token');
     localStorage.removeItem('token');
-    axios.delete("http://localhost:3000/api/session", {headers: {"Authorization": token}});
+    axios.get(LOGOUT_URL, {headers: {AUTH_TOKEN_HEADER: token}});
     return true;
   },
 
