@@ -14,8 +14,8 @@ const authentication = {
   },
 
   login (email, password, cb) {
-    const promise = axios.post("http://localhost:3000/api/session", {email: email,
-                                                                     password: password});
+    const promise = axios.post(LOGIN_URL, {email: email,
+                                           password: password});
     this.handleAuth(promise, cb);
   },
 
